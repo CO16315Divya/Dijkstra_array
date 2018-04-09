@@ -28,14 +28,7 @@ int initialize_single_source(struct node nodearray[],int source,int vertices)
 
     }
 
-    cout<<"vertex"<<"\t\t\t"<<"Minimum distance"<<endl;
 
-for(int i=0;i<vertices;i++)
-{
-    cout<<i<<"\t\t\t";
-    cout<<nodearray[i].finaldist<<endl;
-
-}
     flag=vertices;
     nodearray[source].pred=-1;
     nodearray[source].finaldist=0;
@@ -73,23 +66,28 @@ void  dijkstra(int arrk[v][v],int source,int vertices)
     while( flag!=0)
     {
         int p=extract_min(nodearray,vertices);
+
         nodearray[p].includeset=true;
         flag--;
         count++;
-        for(int j=0;j<vertices;j++)
+        for(int j=1;j<vertices;j++)
         {
+
             if(arrk[p][j]!=0)
             {
+
                 if(nodearray[j].finaldist> nodearray[p].finaldist + arrk[p][j])
                 {
+
                   nodearray[j].finaldist = nodearray[p].finaldist + arrk[p][j];
                     nodearray[j].pred = p;
+
                 }
             }
 
         }
     }
-    cout<<"No. of vertex processed "<<"\t"<<count<<endl;
+
     cout<<"vertex"<<"\t\t\t"<<"Minimum distance"<<endl;
 
 for(int i=0;i<vertices;i++)
@@ -108,7 +106,7 @@ int main()
 
     int i=0;
 
-
+ int so;
 
     int vp;
 
@@ -146,7 +144,10 @@ int main()
         cout<<endl;
     }
 
-    dijkstra(arrk,0,vp);
+    cout<<"enter source";
+    cin>>so;
+
+    dijkstra(arrk,so,vp);
 
 
 
